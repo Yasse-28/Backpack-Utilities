@@ -67,10 +67,10 @@ def extract_images_tstamps_from_folder(sync_data, scl=1, display=False):
                 names_file.write(f"{timestamps[img_id]:10.6f} rgb/{timestamps[img_id]:10.6f}.png\n")
                 cv2.imwrite(img_filename, frame)
 
-            # if display:
-            #     cv2.imshow('frame', frame)
-            #     if cv2.waitKey(1) & 0xFF == ord('q'):
-            #         break
+            if display:
+                cv2.imshow('frame', frame)
+                if cv2.waitKey(1) & 0xFF == ord('q'):
+                    break
 
             # if i > 800:
             #     break
@@ -87,9 +87,9 @@ if __name__ == "__main__":
     # saving_path = "/media/robotvision/data/datasets/MEMEX_Pilots/Lisbon/Mission_2/Sequence_3/B1/images"
     # first_frame = 0  # 15800
     # extract_images_from_sequence(video_filename=video_path, saving_path=saving_path, starting_index=first_frame)
-    base_path = '/media/robotvision/data/datasets/MEMEX_Pilots/Lisbon/Mission_2/Sequence_8'
-    names = ['B1', 'B2', 'B3', 'B4', 'T1', 'T2', 'T3', 'T4']
+    base_path = '/media/robotvision/data/datasets/MEMEX_Pilots/Genoa'
+    names = ['T4', 'B4','T3', 'B3']
     # names = ['B1', 'T1']
-    init_index = 2000
+    init_index = 0
     sync_data = SynchronizedData(base_path, names)
-    extract_images_tstamps_from_folder(sync_data, scl=1)
+    extract_images_tstamps_from_folder(sync_data, scl=10)
